@@ -5,4 +5,4 @@ import { Router } from "express";
 export const indexRouter = Router();
 
 indexRouter.use("/review", reviewRouter);
-indexRouter.use("/", userRouter);
+indexRouter.use("/user", userRouter);

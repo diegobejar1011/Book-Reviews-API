@@ -10,11 +10,11 @@ export class GetReviewsByUserController {
 
             const reviews = await this.getReviewsByUserService.execute(parseInt(id))
 
-            return res.status(200).json(reviews)
+            res.status(200).json(reviews)
 
         } catch (error: any) {
             console.log(error)
-            return res.status(500).json(error.message)
+            res.status(500).json(error.message)
         }
     }
 }

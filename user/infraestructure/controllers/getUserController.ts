@@ -8,13 +8,13 @@ export class GetUserController {
 
             const { email } = req.params;
 
-            const user = this.getUserService.execute(email);
+            const user =  await this.getUserService.execute(email);
 
-            return res.status(200).json(user);
+            res.status(200).json(user);
 
         } catch (error: any) {
             console.log(error)
-            return res.status(500).json(error.message)
+            res.status(500).json(error.message)
         }
     }
 }

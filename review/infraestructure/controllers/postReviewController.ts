@@ -10,10 +10,10 @@ export class PostReviewController {
 
             const id = await this.postReviewService.execute(review);
 
-            return res.status(200).json(id);
+            res.status(200).json(id);
         } catch (error: any) {
             console.log(error)
-            return res.status(500).json(error.message)
+            res.status(500).json(error.message)
         }
     }
 }

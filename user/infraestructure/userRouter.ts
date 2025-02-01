@@ -7,4 +7,4 @@ config();
 export const userRouter = Router();
 
 userRouter.get("/:email", getUserController.execute.bind(getUserController));
-userRouter.post("/", getUserController.execute.bind(getUserController));
+userRouter.post("/", createUserController.execute.bind(createUserController));

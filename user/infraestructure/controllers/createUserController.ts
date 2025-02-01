@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import { CreateUserService } from "../../application/createUserService";
+import { UserReq } from "../../domain/entities";
 
 export class CreateUserController{
     constructor(private readonly createUserService: CreateUserService){}
     async execute(req: Request, res: Response) {
         try {
             
-            const user = req.body;
+            const user : UserReq = req.body;
 
-            const id = this.createUserService.execute(user);
+            const id = await this.createUserService.execute(user);
 
-            return res.status(200).json(id);
+            res.status(200).json(id);
 
         } catch (error: any) {
             console.log(error);
-            return res.status(500).json(error.message);
+            res.status(500).json(error.message);
         }
     }
 }
