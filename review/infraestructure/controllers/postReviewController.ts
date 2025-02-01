@@ -8,9 +8,9 @@ export class PostReviewController {
         try {
             const review: ReviewReq = req.body;
 
-            this.postReviewService.execute(review);
+            const id = await this.postReviewService.execute(review);
 
-            return res.status(200).json(true);
+            return res.status(200).json(id);
         } catch (error: any) {
             console.log(error)
             return res.status(500).json(error.message)
