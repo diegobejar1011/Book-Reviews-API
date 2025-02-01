@@ -1,10 +1,12 @@
 import { DataRepository } from "../domain/repositories/DataRepository";
+import { UserRes } from "../domain/entities";
 
 export class GetUserService{
     constructor(private readonly dataRepository: DataRepository){}
-    async execute(email: string) {
+    async execute(emailReq: string) {
         try {
-            const user = await this.dataRepository.getUser(email);
+
+            const user = await this.dataRepository.getUser(emailReq);
 
             if(!user) {
                 return {
@@ -13,10 +15,16 @@ export class GetUserService{
                 };
             }
 
+            const {username, email} : UserRes = user;
+            
             return {
                 message: "Usuario encontrado",
-                user: user
+                user: {
+                    username: username,
+                    email: email
+                }
             };
+
         } catch (error: any) {
             throw new Error(error)
         }

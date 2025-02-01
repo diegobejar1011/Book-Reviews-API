@@ -1,6 +1,6 @@
-import { UserReq, UserRes } from "../entities";
+import { UserReq, User } from "../entities";
 
 export interface DataRepository {
     createUser(user: UserReq): Promise<number>
-    getUser(email: string): Promise<UserRes>
+    getUser(email: string): Promise<User>
 }

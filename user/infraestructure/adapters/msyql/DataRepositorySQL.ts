@@ -1,4 +1,4 @@
-import { UserReq, UserRes } from "../../../domain/entities";
+import { UserReq, User } from "../../../domain/entities";
 import { DataRepository } from "../../../domain/repositories/DataRepository";
 import { db } from "../../../../shared/mysql/application/conn";
 
@@ -17,7 +17,7 @@ export class DataRepositorySQL implements DataRepository {
         }
     }
 
-    async getUser(email: string): Promise<UserRes> {
+    async getUser(email: string): Promise<User> {
         try {
             const query = "SELECT id, username, email, password FROM user WHERE email = ?";
 
