@@ -8,7 +8,7 @@ export class DataRepositorySQL implements DataRepository {
         try {
             const query = "INSERT INTO review (id_user, book_title, book_author, rating, description) VALUES (?, ?, ?, ?, ?)";
 
-            const result : any = await db.execute(query, [Object.values(review)])
+            const result : any = await db.execute(query, Object.values(review))
 
             return result[0].insertId;
 

@@ -6,7 +6,17 @@ export class GetReviewsByUserService {
         try {
             const reviews = await this.dataRespository.getReviewsByUser(id_user);
 
-            return reviews;
+            if(reviews.length == 0){
+                return {
+                    message: "No hay notas del usuario",
+                    reviews: false
+                }
+            }
+
+            return {
+                message: "Reseñas encontradas",
+                reviews: reviews
+            };
         } catch (error: any) {
             throw new Error(error);
         }

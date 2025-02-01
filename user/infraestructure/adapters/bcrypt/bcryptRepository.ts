@@ -5,7 +5,7 @@ export class BcrypRepository implements EncryptRepository{
     async encodePassword(plantextPassword: string): Promise<string> {
         try {
             
-            const hashPassword = await bcrypt.hash(plantextPassword, "10");
+            const hashPassword = await bcrypt.hash(plantextPassword, 10);
 
             return hashPassword;
         

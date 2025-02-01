@@ -6,7 +6,17 @@ export class GetUserService{
         try {
             const user = await this.dataRepository.getUser(email);
 
-            return user;
+            if(!user) {
+                return {
+                    message: "Usuario no encontrado",
+                    user: false
+                };
+            }
+
+            return {
+                message: "Usuario encontrado",
+                user: user
+            };
         } catch (error: any) {
             throw new Error(error)
         }

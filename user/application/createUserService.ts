@@ -11,7 +11,7 @@ export class CreateUserService{
 
             user.password = hash;
 
-            const id = this.dataRepository.createUser(user);
+            const id = await this.dataRepository.createUser(user);
 
             return id;
         } catch (error: any) {
