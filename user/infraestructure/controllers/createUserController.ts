@@ -9,9 +9,9 @@ export class CreateUserController{
             
             const user : UserReq = req.body;
 
-            const id = await this.createUserService.execute(user);
+            const result = await this.createUserService.execute(user);
 
-            res.status(200).json(id);
+            res.status(200).json(result);
 
         } catch (error: any) {
             console.log(error);

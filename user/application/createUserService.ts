@@ -13,7 +13,12 @@ export class CreateUserService{
 
             const id = await this.dataRepository.createUser(user);
 
-            return id;
+            return {
+                id: id,
+                username: user.username,
+                email: user.email
+            };
+            
         } catch (error: any) {
             throw new Error(error);
         }

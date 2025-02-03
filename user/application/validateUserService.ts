@@ -34,8 +34,10 @@ export class ValidateUserService{
             return {
                 message: "Usuario encontrado",
                 validate: validate,
-                token: token
+                token: token,
+                id: user.id
             };
+            
         } catch (error: any) {
             throw new Error(error)
         }
