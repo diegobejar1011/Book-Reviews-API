@@ -4,8 +4,8 @@ import { config } from "dotenv"
 config();
 
 export const DataConfig: ConnectionOptions = {
-    host: "127.0.0.1",
-    user: "root",
-    password: "Nanami04?",
+    host: "tomo-database.cjy0nlhvgoxa.us-east-1.rds.amazonaws.com",
+    user: "admin",
+    password: "Apptomodb25",
     database: "TOMO"
 };
