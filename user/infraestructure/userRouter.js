@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRouter = void 0;
+const userDependencies_1 = require("./userDependencies");
+const express_1 = require("express");
+const dotenv_1 = require("dotenv");
+(0, dotenv_1.config)();
+exports.userRouter = (0, express_1.Router)();
+exports.userRouter.get("/:email", userDependencies_1.getUserController.execute.bind(userDependencies_1.getUserController));
+exports.userRouter.post("/", userDependencies_1.createUserController.execute.bind(userDependencies_1.createUserController));
+exports.userRouter.post("/login", userDependencies_1.validateUserController.execute.bind(userDependencies_1.validateUserController));
