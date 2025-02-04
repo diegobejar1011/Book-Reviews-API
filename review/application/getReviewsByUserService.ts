@@ -9,7 +9,7 @@ export class GetReviewsByUserService {
             if(reviews.length == 0){
                 return {
                     message: "No hay notas del usuario",
-                    reviews: false
+                    reviews: []
                 }
             }
 
