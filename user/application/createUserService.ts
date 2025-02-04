@@ -7,6 +7,11 @@ export class CreateUserService{
     async execute(user: UserReq){
         try {
 
+            if(user.email == "" || user.password == "" || user.username == "") {
+                return {
+                    message: "Hace falta campos por llenar"
+                };
+            }
             const hash = await this.encryptRepository.encodePassword(user.password);
 
             user.password = hash;

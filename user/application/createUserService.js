@@ -18,6 +18,11 @@ class CreateUserService {
     execute(user) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                if (user.email == "" || user.password == "" || user.username == "") {
+                    return {
+                        message: "Hace falta campos por llenar"
+                    };
+                }
                 const hash = yield this.encryptRepository.encodePassword(user.password);
                 user.password = hash;
                 const id = yield this.dataRepository.createUser(user);
