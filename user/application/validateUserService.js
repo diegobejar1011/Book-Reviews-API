@@ -32,7 +32,7 @@ class ValidateUserService {
                 }
                 let token = null;
                 if (validate) {
-                    token = this.createTokenService.execute({
+                    token = "Bearer " + this.createTokenService.execute({
                         id: user.id,
                         username: user.username,
                         email: user.email

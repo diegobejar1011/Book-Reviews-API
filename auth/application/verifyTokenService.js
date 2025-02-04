@@ -9,6 +9,7 @@ class VerifyTokenService {
         try {
             let token = req.get("Authorization");
             if (token) {
+                token = token.substring(7);
                 this.authRepository.verifyToken(token);
                 next();
             }

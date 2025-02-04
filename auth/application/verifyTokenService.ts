@@ -10,7 +10,7 @@ export class VerifyTokenService {
 
             if(token){
                 token = token.substring(7)
-                this.authRepository.verifyToken(token);
+                this.authRepository.verifyToken(token); 
                 next();
             }else {
                 res.status(400).json({
