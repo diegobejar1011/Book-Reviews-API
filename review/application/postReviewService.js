@@ -14,10 +14,10 @@ class PostReviewService {
     constructor(dataRepository) {
         this.dataRepository = dataRepository;
     }
-    execute(review) {
+    execute(id_user, review) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const id = yield this.dataRepository.postReview(review);
+                const id = yield this.dataRepository.postReview(id_user, review);
                 return id;
             }
             catch (error) {

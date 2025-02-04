@@ -5,4 +5,4 @@ import { verifyTokenService } from "../../auth/infraestructure/authDependencies"
 export const reviewRouter = Router();
 
 reviewRouter.get("/:id", verifyTokenService.execute.bind(verifyTokenService), getReviewsByUserController.execute.bind(getReviewsByUserController));
-reviewRouter.post("/", verifyTokenService.execute.bind(verifyTokenService), postReviewController.execute.bind(postReviewController));
+reviewRouter.post("/:id", verifyTokenService.execute.bind(verifyTokenService), postReviewController.execute.bind(postReviewController));

@@ -18,8 +18,9 @@ class PostReviewController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const review = req.body;
-                const id = yield this.postReviewService.execute(review);
-                res.status(200).json({ id: id });
+                const { id } = req.params;
+                const id_review = yield this.postReviewService.execute(parseInt(id), review);
+                res.status(200).json({ id: id_review });
             }
             catch (error) {
                 console.log(error);
