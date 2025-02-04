@@ -19,11 +19,13 @@ class PostReviewController {
             try {
                 const review = req.body;
                 const id = yield this.postReviewService.execute(review);
-                res.status(200).json(id);
+                res.status(200).json({ id: id });
             }
             catch (error) {
                 console.log(error);
-                res.status(500).json(error.message);
+                res.status(500).json({
+                    message: error.message
+                });
             }
         });
     }
