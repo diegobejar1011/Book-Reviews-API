@@ -17,7 +17,7 @@ class PostReviewService {
     execute(review) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const id = this.dataRepository.postReview(review);
+                const id = yield this.dataRepository.postReview(review);
                 return id;
             }
             catch (error) {

@@ -5,7 +5,7 @@ export class PostReviewService {
     constructor(private readonly dataRepository: DataRepository){}
     async execute(review: ReviewReq) {
         try {
-            const id = this.dataRepository.postReview(review);
+            const id = await this.dataRepository.postReview(review);
 
             return id;
         } catch (error: any) {
