@@ -5,4 +5,5 @@ export type ReviewRes = {
     book_author: string;
     rating: number;
     description: string;
+    image: string;
 };

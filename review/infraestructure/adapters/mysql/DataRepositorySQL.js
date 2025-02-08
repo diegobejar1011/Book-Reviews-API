@@ -15,8 +15,8 @@ class DataRepositorySQL {
     postReview(id_user, review) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const query = "INSERT INTO review (id_user, book_title, book_author, rating, description) VALUES (?, ?, ?, ?, ?)";
-                const result = yield conn_1.db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description]);
+                const query = "INSERT INTO review (id_user, book_title, book_author, rating, description, image) VALUES (?, ?, ?, ?, ?, ?)";
+                const result = yield conn_1.db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description, review.image]);
                 return result[0].insertId;
             }
             catch (error) {
@@ -27,7 +27,7 @@ class DataRepositorySQL {
     getReviewsByUser(id_user) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const query = "SELECT id, id_user, book_title, book_author, rating, description FROM review WHERE id_user = ? ";
+                const query = "SELECT id, id_user, book_title, book_author, rating, description, image FROM review WHERE id_user = ? ";
                 const [results] = yield conn_1.db.execute(query, [id_user]);
                 return results;
             }

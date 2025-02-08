@@ -6,9 +6,9 @@ import { db } from "../../../../shared/mysql/application/conn";
 export class DataRepositorySQL implements DataRepository {
     async postReview(id_user: number, review: ReviewReq): Promise<Number> {
         try {
-            const query = "INSERT INTO review (id_user, book_title, book_author, rating, description) VALUES (?, ?, ?, ?, ?)";
+            const query = "INSERT INTO review (id_user, book_title, book_author, rating, description, image) VALUES (?, ?, ?, ?, ?, ?)";
 
-            const result : any = await db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description])
+            const result : any = await db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description, review.image])
 
             return result[0].insertId;
 
@@ -19,7 +19,7 @@ export class DataRepositorySQL implements DataRepository {
 
     async getReviewsByUser(id_user: number): Promise<ReviewRes[]> {
         try {
-            const query = "SELECT id, id_user, book_title, book_author, rating, description FROM review WHERE id_user = ? "
+            const query = "SELECT id, id_user, book_title, book_author, rating, description, image FROM review WHERE id_user = ? "
 
             const [results]: any = await db.execute(query, [id_user])
 
