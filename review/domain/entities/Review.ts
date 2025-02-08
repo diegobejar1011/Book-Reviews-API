@@ -5,7 +5,7 @@ export type Review = {
     book_author: string;
     rating: number;
     description: string;
-    image: string;
+    image: string | null;
     created_at: Date;
     updated_at: Date;
 };

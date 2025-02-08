@@ -3,5 +3,5 @@ export type ReviewReq = {
     book_author: string;
     rating: number;
     description: string;
-    image: string;
+    image: string | null;
 };

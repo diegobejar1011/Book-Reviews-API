@@ -6,11 +6,21 @@ import { db } from "../../../../shared/mysql/application/conn";
 export class DataRepositorySQL implements DataRepository {
     async postReview(id_user: number, review: ReviewReq): Promise<Number> {
         try {
-            const query = "INSERT INTO review (id_user, book_title, book_author, rating, description, image) VALUES (?, ?, ?, ?, ?, ?)";
 
-            const result : any = await db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description, review.image])
+            if(review.image != null) {
+                const query = "INSERT INTO review (id_user, book_title, book_author, rating, description, image) VALUES (?, ?, ?, ?, ?, ?)";
+
+                const result : any = await db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description, review.image])
+    
+                return result[0].insertId;
+            } 
+            
+            const query = "INSERT INTO review (id_user, book_title, book_author, rating, description) VALUES (?, ?, ?, ?, ?)";
+
+            const result : any = await db.execute(query, [id_user, review.book_title, review.book_author, review.rating, review.description])
 
             return result[0].insertId;
+            
 
         } catch (error: any) {
             throw new Error(error.message)
